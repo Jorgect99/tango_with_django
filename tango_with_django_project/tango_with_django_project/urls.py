@@ -16,13 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from tango_with_django_project import settings
 
-from rango.urls import rango_patterns
-from rango import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #Path rango
-    path('', include(rango_patterns)),
+    path('rango/', include('rango.urls')),
     
 ]
+
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <title>Cat page</title>
+</head>
+<body>
+    <h1>Cat says...</h1>
+    <div>
+        hey there partner! <br />
+        <strong>{{ boldmessage }}</strong><br />
+        <p>My name is {{ cat_name }}</p>
+        <p>I like eat {{ favorite_food }}</p>
+    </div>
+    <div>
+        <a href="/rango/">Home</a><br />
+        <a href="/rango/about/">About</a><br />
+        <img src="{{ MEDIA_URL }}rango/cat.jpg" alt="Picture of cat" />
+    </div>
+</body>
+</html>

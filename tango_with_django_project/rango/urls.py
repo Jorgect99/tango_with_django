@@ -1,7 +1,9 @@
 from django.urls import path
-from rango import views
+from . import views
 
 
-rango_patterns = [
+urlpatterns = [
     path('', views.index, name='index'),
+    path('about/', views.about, name='about'),
+    path('cat/', views.cat, name='cat'),
 ]

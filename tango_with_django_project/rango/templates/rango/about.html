@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <title>About me</title>
+</head>
+<body>
+    <h1>This is about template...</h1>
+    <div>
+        hey there partner! <br />
+        Mi name is <strong>{{ my_name }}</strong><br />
+    </div>
+    <div>
+        <a href="/rango/">Home</a><br />
+        <a href="/rango/cat/">Cat</a><br />
+        
+        <img src="{% static 'images/about-me.jpg' %}" alt="Picture of about" />
+    </div>
+</body>
+</html>
