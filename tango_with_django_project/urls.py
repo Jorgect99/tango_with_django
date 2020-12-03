@@ -17,14 +17,26 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from tango_with_django_project import settings
+from registration.backends.simple.views import RegistrationView
+from django.urls import reverse
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
 
+class MyRegistrationView(RegistrationView):
+    def get_success_url(self, user):
+        return reverse('index')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #Path rango
     path('rango/', include('rango.urls')),
-    
+
+    #Path registration
+    path('accounts/', include('registration.backends.simple.urls')),
+    path('accounts/register/', MyRegistrationView.as_view(), name='registration_register'),
+    path('accounts/passwordchange/', PasswordChangeView.as_view(), name='password_change'),
+    path('accounts/password/change/done', PasswordChangeDoneView.as_view(), name='password_change'),
+
 ]
 
 if settings.DEBUG:

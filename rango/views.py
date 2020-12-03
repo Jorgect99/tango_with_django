@@ -21,14 +21,14 @@ def index(request):
     return response
 
 def get_server_side_cookie(request, cookie, default_value=None):
-    val = request.cookies.get(cookie)
+    val = request.session.get(cookie)
     if not val:
         val = default_value
     return val
 
 #cookie 
 def visitor_cookie_handler(request):
-    visits = int(request.COOKIES.get('visits','1'))
+    visits = int(get_server_side_cookie(request, 'visits', '1'))
 
     last_visit_cookie = request.COOKIES.get('last_visit', str(datetime.now()))
     last_visit_time = datetime.strptime(last_visit_cookie[:-7],'%Y-%m-%d %H:%M:%S')
